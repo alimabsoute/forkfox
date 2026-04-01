@@ -1,6 +1,6 @@
 {
   "rewrites": [
-    { "source": "/", "destination": "/fork-landing-cinematic.html" }
+    { "source": "/", "destination": "/preview-redesign.html" }
   ],
   "headers": [
     {
