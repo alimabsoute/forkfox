@@ -1,0 +1,38 @@
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Vercel
+.vercel/
+
+# Large generated files (regenerate with build scripts)
+# Uncomment these if you want to keep generated files out of git:
+# strategy/*.pptx
+# strategy/*.pdf
+# strategy/*.xlsx
+# crm/*.csv
+# crm/*.xlsx
+
+# Sensitive
+*.credentials
+*.key
+*.pem
