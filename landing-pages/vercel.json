@@ -1,6 +1,8 @@
 {
   "rewrites": [
-    { "source": "/", "destination": "/preview-redesign.html" }
+    { "source": "/", "destination": "/fork-landing-cinematic.html" },
+    { "source": "/privacy", "destination": "/privacy/index.html" },
+    { "source": "/support", "destination": "/support/index.html" }
   ],
   "headers": [
     {
@@ -13,6 +15,12 @@
     },
     {
       "source": "/(.*\\.png)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/(.*\\.jpg)",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
       ]
