@@ -4,7 +4,8 @@
     { "source": "/privacy", "destination": "/privacy/index.html" },
     { "source": "/support", "destination": "/support/index.html" },
     { "source": "/the-dish", "destination": "/the-dish/index.html" },
-    { "source": "/the-dish/(.*)", "destination": "/the-dish/$1" }
+    { "source": "/the-dish/(.*)", "destination": "/the-dish/$1" },
+    { "source": "/socials", "destination": "/socials/index.html" }
   ],
   "headers": [
     {
