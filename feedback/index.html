@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ForkFox — Design Review</title>
+<meta name="description" content="Critical design review for forkfox.ai — 10 top findings, copy audit, narrative rebuild.">
+<link rel="icon" type="image/png" href="../forkfox-logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:#070707;color:#fff;font-family:'Inter',sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column}
+a{color:#FA2A52;text-decoration:none;border-bottom:1px solid rgba(250,42,82,.35);transition:all .2s}
+a:hover{color:#fff;border-bottom-color:#fff}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:50;background:rgba(7,7,7,.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.06);padding:1rem clamp(1.25rem,4vw,2.5rem);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+nav .brand{display:flex;align-items:center;gap:.7rem}
+nav .lg{width:32px;height:32px;border-radius:8px;background:#FA2A52;display:flex;align-items:center;justify-content:center;overflow:hidden}
+nav .lg img{width:23px;height:23px}
+nav .t{font-family:'Geologica',sans-serif;font-weight:900;font-size:1.05rem;letter-spacing:-.02em}
+nav .t .fox{color:#F97316}
+nav .sep{color:rgba(255,255,255,.15);margin:0 .35rem}
+nav .sub{font-size:.78rem;color:rgba(255,255,255,.45);font-weight:500;letter-spacing:.02em;text-transform:uppercase}
+nav .links{display:flex;gap:.5rem;align-items:center}
+nav .links a{padding:.55rem 1rem;border-radius:100px;font-size:.74rem;font-weight:700;color:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.08);transition:all .25s;text-transform:uppercase;letter-spacing:.06em}
+nav .links a:hover{color:#fff;border-color:rgba(255,255,255,.2);background:rgba(255,255,255,.03)}
+nav .links a.back{background:#FA2A52;color:#fff;border-color:#FA2A52}
+nav .links a.back:hover{background:#e0234a}
+
+/* HEADER */
+.hdr{padding:clamp(3rem,7vw,6rem) clamp(1.25rem,4vw,2rem) clamp(2rem,4vw,3rem);text-align:center;position:relative;overflow:hidden;border-bottom:1px solid rgba(255,255,255,.06)}
+.hdr::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(249,115,22,.18),transparent 70%);pointer-events:none}
+.hdr>*{position:relative;z-index:1}
+.hdr .eyebrow{display:inline-block;padding:.4rem 1rem;border-radius:100px;background:rgba(249,115,22,.12);border:1px solid rgba(249,115,22,.35);font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.16em;color:#F97316;margin-bottom:1.25rem}
+.hdr h1{font-family:'Geologica',sans-serif;font-weight:900;font-size:clamp(2rem,5vw,3.75rem);letter-spacing:-.035em;margin-bottom:.75rem;line-height:1.05}
+.hdr .sub{color:rgba(255,255,255,.5);font-size:clamp(.9rem,1.6vw,1.05rem);max-width:640px;margin:0 auto}
+.hdr .meta{margin-top:1.5rem;display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;font-size:.72rem;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.1em;font-weight:600}
+.hdr .meta span b{color:#fff;font-weight:800}
+
+/* CONTENT */
+main{flex:1 0 auto;max-width:780px;margin:0 auto;padding:clamp(2.5rem,5vw,4rem) clamp(1.25rem,4vw,2rem) clamp(3rem,6vw,5rem);width:100%}
+
+#md{font-size:1.02rem;color:rgba(255,255,255,.82)}
+#md h1{display:none}
+#md h2{font-family:'Geologica',sans-serif;font-weight:900;font-size:clamp(1.6rem,3vw,2.35rem);letter-spacing:-.03em;color:#fff;margin:3.5rem 0 1.25rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.08);line-height:1.15}
+#md h2:first-child{border-top:none;padding-top:0;margin-top:0}
+#md h3{font-family:'Geologica',sans-serif;font-weight:800;font-size:clamp(1.2rem,2vw,1.5rem);color:#fff;margin:2.5rem 0 .9rem;letter-spacing:-.015em}
+#md h4{font-family:'Geologica',sans-serif;font-weight:700;font-size:1.05rem;color:#F97316;margin:1.75rem 0 .6rem;text-transform:none;letter-spacing:-.005em}
+#md p{margin:0 0 1.25rem;color:rgba(255,255,255,.75);line-height:1.75}
+#md strong{color:#fff;font-weight:700}
+#md em{color:#FA2A52;font-style:italic}
+#md ul,#md ol{margin:0 0 1.5rem 1.5rem;color:rgba(255,255,255,.75)}
+#md ul li,#md ol li{margin-bottom:.5rem;line-height:1.7}
+#md ul li::marker{color:rgba(250,42,82,.6)}
+#md ol li::marker{color:rgba(249,115,22,.8);font-weight:800}
+#md blockquote{border-left:3px solid #FA2A52;margin:1.5rem 0;padding:1rem 1.5rem;background:rgba(250,42,82,.06);border-radius:0 8px 8px 0;color:rgba(255,255,255,.85);font-style:italic}
+#md blockquote p{margin-bottom:0}
+#md code{font-family:'JetBrains Mono',monospace;font-size:.85em;background:rgba(255,255,255,.07);padding:.15em .45em;border-radius:4px;color:#F97316;border:1px solid rgba(255,255,255,.06)}
+#md pre{background:rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:1.25rem;overflow-x:auto;margin:1.5rem 0}
+#md pre code{background:none;border:none;padding:0;color:rgba(255,255,255,.85);font-size:.82rem;line-height:1.6}
+#md hr{border:none;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent);margin:3rem 0}
+#md a{color:#FA2A52;border-bottom:1px solid rgba(250,42,82,.35)}
+#md a:hover{color:#fff;border-bottom-color:#fff}
+#md table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:.88rem;border:1px solid rgba(255,255,255,.08);border-radius:8px;overflow:hidden;display:block;overflow-x:auto}
+#md thead{background:rgba(250,42,82,.1)}
+#md th{text-align:left;padding:.85rem 1rem;font-family:'Geologica',sans-serif;font-weight:700;color:#fff;font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;border-bottom:1px solid rgba(255,255,255,.12);white-space:nowrap}
+#md td{padding:.8rem 1rem;border-top:1px solid rgba(255,255,255,.05);vertical-align:top;color:rgba(255,255,255,.75);font-size:.85rem}
+#md td code{font-size:.78em}
+#md tbody tr:hover{background:rgba(255,255,255,.02)}
+
+.loading{text-align:center;color:rgba(255,255,255,.4);padding:4rem 2rem;font-size:.9rem}
+.loading::after{content:'';display:inline-block;width:12px;height:12px;border:2px solid rgba(250,42,82,.3);border-top-color:#FA2A52;border-radius:50%;margin-left:.6rem;vertical-align:middle;animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* FOOTER */
+footer{padding:2rem clamp(1.25rem,4vw,2rem);border-top:1px solid rgba(255,255,255,.06);text-align:center;font-size:.75rem;color:rgba(255,255,255,.35);flex-shrink:0;margin-top:auto}
+footer a{color:rgba(255,255,255,.55);border-bottom:none}
+footer a:hover{color:#FA2A52}
+
+@media (max-width:640px){
+ nav .links a:not(.back){display:none}
+ #md h2{font-size:1.55rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+ <div class="brand">
+  <div class="lg"><img src="../forkfox-logo.png" alt=""></div>
+  <span class="t">Fork<span class="fox">Fox</span></span>
+  <span class="sep">·</span>
+  <span class="sub">Design Review</span>
+ </div>
+ <div class="links">
+  <a href="../gallery/">Gallery</a>
+  <a href="DESIGN-REVIEW.md">Raw .md</a>
+  <a href="../" class="back">← Hub</a>
+ </div>
+</nav>
+
+<header class="hdr">
+ <span class="eyebrow">2026-04-09 · Internal</span>
+ <h1>Critical Design Review</h1>
+ <p class="sub">Extreme critical view of forkfox.ai. Every weakness flagged. Every assumption questioned.</p>
+ <div class="meta">
+  <span>Findings: <b>10 priority</b></span>
+  <span>Sections: <b>11</b></span>
+  <span>Scope: <b>landing + subpages</b></span>
+ </div>
+</header>
+
+<main>
+ <div id="md" class="loading">Loading review</div>
+</main>
+
+<footer>
+ ForkFox Design Preview · <a href="https://github.com/alimabsoute/forkfox" target="_blank" rel="noopener">github.com/alimabsoute/forkfox</a> · <a href="../">Hub</a> · <a href="../gallery/">Gallery</a>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+(async function(){
+ const el = document.getElementById('md');
+ try {
+  const res = await fetch('DESIGN-REVIEW.md', {cache: 'no-cache'});
+  if (!res.ok) throw new Error('HTTP ' + res.status);
+  const src = await res.text();
+  marked.setOptions({ gfm: true, breaks: false });
+  el.classList.remove('loading');
+  el.innerHTML = marked.parse(src);
+ } catch (err) {
+  el.classList.remove('loading');
+  el.innerHTML = '<p style="color:#FA2A52">Failed to load DESIGN-REVIEW.md: ' + err.message + '</p>';
+ }
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ForkFox — Design Preview</title>
+<meta name="description" content="ForkFox design preview: 60 mockup variations and the critical design review.">
+<link rel="icon" type="image/png" href="forkfox-logo.png">
+<meta property="og:title" content="ForkFox — Design Preview">
+<meta property="og:description" content="60 design variations and the critical design review for forkfox.ai.">
+<meta property="og:image" content="forkfox-logo.png">
+<meta name="twitter:card" content="summary_large_image">
+<link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:#070707;color:#fff;font-family:'Inter',sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column}
+h1,h2,h3,h4,h5,h6{font-family:'Geologica',sans-serif;font-weight:800;line-height:1.05;letter-spacing:-.03em}
+a{text-decoration:none;color:inherit}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:50;background:rgba(7,7,7,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.06);padding:1rem clamp(1.25rem,4vw,2.5rem);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+nav .brand{display:flex;align-items:center;gap:.7rem}
+nav .lg{width:32px;height:32px;border-radius:8px;background:#FA2A52;display:flex;align-items:center;justify-content:center;overflow:hidden}
+nav .lg img{width:23px;height:23px}
+nav .t{font-family:'Geologica',sans-serif;font-weight:900;font-size:1.05rem;letter-spacing:-.02em}
+nav .t .fox{color:#F97316}
+nav .sep{color:rgba(255,255,255,.15);margin:0 .35rem}
+nav .sub{font-size:.78rem;color:rgba(255,255,255,.45);font-weight:500;letter-spacing:.02em;text-transform:uppercase}
+nav .right{font-size:.72rem;color:rgba(255,255,255,.4);font-weight:600;text-transform:uppercase;letter-spacing:.14em}
+
+/* HERO */
+.hero{padding:clamp(4rem,9vw,8rem) clamp(1.25rem,4vw,2rem) clamp(3rem,6vw,5rem);text-align:center;position:relative;overflow:hidden;flex:1 0 auto}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 40% at 50% 0%,rgba(250,42,82,.22),transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 40% 30% at 80% 80%,rgba(249,115,22,.12),transparent 70%);pointer-events:none}
+.hero>*{position:relative;z-index:1}
+.eyebrow{display:inline-block;padding:.45rem 1.1rem;border-radius:100px;background:rgba(250,42,82,.12);border:1px solid rgba(250,42,82,.35);font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.16em;color:#FA2A52;margin-bottom:1.75rem}
+.hero h1{font-size:clamp(2.5rem,8vw,5.5rem);font-weight:900;margin-bottom:1.25rem;letter-spacing:-.04em;max-width:14ch;margin-left:auto;margin-right:auto}
+.hero h1 em{font-style:normal;color:#FA2A52}
+.hero .lede{max-width:620px;margin:0 auto 3rem;color:rgba(255,255,255,.6);font-size:clamp(1rem,1.8vw,1.2rem);line-height:1.65}
+
+/* CARDS */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(1rem,2.5vw,1.75rem);max-width:1100px;margin:0 auto;padding:0 clamp(.5rem,2vw,1rem)}
+.card{position:relative;display:flex;flex-direction:column;padding:clamp(2rem,3.5vw,3rem) clamp(1.75rem,3vw,2.5rem);border-radius:20px;background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.01));border:1px solid rgba(255,255,255,.08);text-align:left;transition:all .35s cubic-bezier(.2,.8,.2,1);overflow:hidden;min-height:360px}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--glow,rgba(250,42,82,.6)),transparent);opacity:.5;transition:opacity .35s}
+.card::after{content:'';position:absolute;inset:-1px;border-radius:20px;background:radial-gradient(circle at 50% 0%,var(--glow,rgba(250,42,82,.18)),transparent 60%);opacity:0;transition:opacity .35s;pointer-events:none}
+.card:hover{transform:translateY(-6px);border-color:var(--glow,rgba(250,42,82,.45));background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.015))}
+.card:hover::before{opacity:1}
+.card:hover::after{opacity:1}
+.card .num{font-family:'Geologica',sans-serif;font-weight:900;font-size:clamp(3.5rem,6vw,5rem);color:transparent;-webkit-text-stroke:1.5px var(--glow,rgba(250,42,82,.5));line-height:.9;margin-bottom:1.25rem;letter-spacing:-.04em}
+.card h2{font-size:clamp(1.5rem,2.8vw,2rem);margin-bottom:.75rem;color:#fff}
+.card p{color:rgba(255,255,255,.55);font-size:.95rem;line-height:1.65;margin-bottom:1.75rem;flex:1}
+.card .meta{display:flex;gap:1.25rem;margin-bottom:1.75rem;padding-top:1.25rem;border-top:1px solid rgba(255,255,255,.06)}
+.card .meta div{display:flex;flex-direction:column;gap:.15rem}
+.card .meta .k{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.35)}
+.card .meta .v{font-size:.85rem;font-weight:600;color:rgba(255,255,255,.8)}
+.card .go{display:inline-flex;align-items:center;gap:.6rem;padding:.9rem 1.5rem;border-radius:100px;background:var(--glow,#FA2A52);color:#fff;font-size:.82rem;font-weight:700;letter-spacing:.02em;align-self:flex-start;transition:transform .3s;position:relative;z-index:2}
+.card .go svg{transition:transform .3s}
+.card:hover .go svg{transform:translateX(4px)}
+.card.feedback{--glow:rgba(249,115,22,.55)}
+.card.feedback .go{background:#F97316}
+
+/* META BAR */
+.meta-bar{max-width:1100px;margin:clamp(3rem,6vw,5rem) auto 0;padding:2rem clamp(1.25rem,4vw,2rem);border-top:1px solid rgba(255,255,255,.06);display:flex;flex-wrap:wrap;gap:2rem;justify-content:space-between;align-items:center;font-size:.78rem;color:rgba(255,255,255,.4)}
+.meta-bar .stats{display:flex;gap:clamp(1.5rem,3vw,2.5rem);flex-wrap:wrap}
+.meta-bar .stats div{display:flex;flex-direction:column;gap:.2rem}
+.meta-bar .stats .n{font-family:'Geologica',sans-serif;font-weight:900;font-size:1.6rem;color:#fff;letter-spacing:-.02em}
+.meta-bar .stats .l{font-size:.65rem;text-transform:uppercase;letter-spacing:.14em;color:rgba(255,255,255,.35);font-weight:700}
+
+/* FOOTER */
+footer{padding:2rem clamp(1.25rem,4vw,2rem);border-top:1px solid rgba(255,255,255,.06);text-align:center;font-size:.75rem;color:rgba(255,255,255,.35);flex-shrink:0;margin-top:auto}
+footer a{color:rgba(255,255,255,.55);transition:color .25s}
+footer a:hover{color:#FA2A52}
+
+@media (max-width:640px){
+ .card{min-height:0}
+ .hero{padding-top:3rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+ <div class="brand">
+  <div class="lg"><img src="forkfox-logo.png" alt=""></div>
+  <span class="t">Fork<span class="fox">Fox</span></span>
+  <span class="sep">·</span>
+  <span class="sub">Design Preview</span>
+ </div>
+ <span class="right">Internal · Not Public</span>
+</nav>
+
+<main class="hero">
+ <span class="eyebrow">Preview Hub</span>
+ <h1>Design <em>preview</em> for forkfox.ai</h1>
+ <p class="lede">Two artifacts from the 2026-04-09 design pass: a 60-variation mockup gallery and the critical design review that framed the rewrite.</p>
+
+ <div class="cards">
+  <a class="card" href="gallery/">
+   <div class="num">60</div>
+   <h2>Design Gallery</h2>
+   <p>60 live CSS mockups for the main landing rewrite — 20 above-the-fold hero treatments, 20 feature-showcase variations, and 20 full-page combinations. Click any tile to open it full-screen.</p>
+   <div class="meta">
+    <div><span class="k">Heros</span><span class="v">20 variations</span></div>
+    <div><span class="k">Features</span><span class="v">20 showcases</span></div>
+    <div><span class="k">Combos</span><span class="v">20 full pages</span></div>
+   </div>
+   <span class="go">Browse gallery
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+   </span>
+  </a>
+
+  <a class="card feedback" href="feedback/">
+   <div class="num">10</div>
+   <h2>Design Review</h2>
+   <p>Critical critique of the current forkfox.ai landing page. Ten top-priority findings, line-by-line copy audit, narrative rebuild, responsive weaknesses, and the recommended rewrite path.</p>
+   <div class="meta">
+    <div><span class="k">Scope</span><span class="v">Landing + subpages</span></div>
+    <div><span class="k">Findings</span><span class="v">10 priority</span></div>
+    <div><span class="k">Date</span><span class="v">2026-04-09</span></div>
+   </div>
+   <span class="go">Read review
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+   </span>
+  </a>
+ </div>
+
+ <div class="meta-bar">
+  <div class="stats">
+   <div><span class="n">60</span><span class="l">Mockups</span></div>
+   <div><span class="n">10</span><span class="l">Findings</span></div>
+   <div><span class="n">3</span><span class="l">Categories</span></div>
+   <div><span class="n">2728</span><span class="l">Lines of CSS</span></div>
+  </div>
+  <div>Updated 2026-04-10</div>
+ </div>
+</main>
+
+<footer>
+ ForkFox Design Preview · <a href="https://github.com/alimabsoute/forkfox" target="_blank" rel="noopener">github.com/alimabsoute/forkfox</a> · <a href="https://forkfox.ai" target="_blank" rel="noopener">forkfox.ai</a>
+</footer>
+
+</body>
+</html>
