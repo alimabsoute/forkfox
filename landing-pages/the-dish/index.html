@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Dish — ForkFox Intelligence Brief</title>
+<meta name="description" content="Dish intel, city spotlights, and the science of scoring. The ForkFox editorial on food discovery.">
+<meta property="og:title" content="The Dish — ForkFox">
+<meta property="og:description" content="Dish intel, city spotlights, and the science behind the score.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://forkfox.ai/the-dish">
+<meta property="og:image" content="https://forkfox.ai/forkfox-logo.png">
+<link rel="icon" type="image/png" href="/forkfox-logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:#0a0a0a;color:#fff;font-family:'Inter',sans-serif;overflow-x:hidden;line-height:1.6}
+h1,h2,h3,h4,h5,h6{font-family:'Geologica',sans-serif;font-weight:700;line-height:1.15}
+a{text-decoration:none;color:inherit}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;background:rgba(10,10,10,.9);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.06)}
+.nav-brand{display:flex;align-items:center;gap:.6rem}
+.nav-logo{width:32px;height:32px;border-radius:8px;background:#FA2A52;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.nav-logo img{width:24px;height:24px;object-fit:contain}
+.nav-name{font-family:'Geologica',sans-serif;font-size:1.1rem;font-weight:800;color:#fff}
+.nav-name .fox{color:#F97316}
+.nav-section{font-size:.72rem;font-weight:600;color:rgba(255,255,255,.3);letter-spacing:.12em;text-transform:uppercase;margin-left:.5rem;padding-left:.75rem;border-left:1px solid rgba(255,255,255,.12)}
+.nav-links{display:flex;align-items:center;gap:1.5rem}
+.nav-links a{color:rgba(255,255,255,.45);font-size:.8rem;font-weight:500;transition:color .3s}
+.nav-links a:hover,.nav-links a.active{color:#fff}
+.nav-cta{padding:.5rem 1.2rem;border-radius:100px;background:#FA2A52;color:#fff !important;font-weight:700;font-size:.75rem;font-family:'Geologica',sans-serif;transition:all .3s}
+.nav-cta:hover{background:#e0234a}
+
+/* HERO */
+.hero{padding:8rem 2rem 4rem;max-width:1200px;margin:0 auto;border-bottom:1px solid rgba(255,255,255,.06)}
+.hero-eyebrow{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.18em;color:#FA2A52;margin-bottom:1rem}
+.hero h1{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:900;letter-spacing:-.04em;margin-bottom:.75rem;line-height:1.05}
+.hero h1 em{font-style:normal;color:#F97316}
+.hero-sub{font-size:1rem;color:rgba(255,255,255,.45);max-width:520px;line-height:1.75}
+.hero-meta{display:flex;align-items:center;gap:2rem;margin-top:2rem;flex-wrap:wrap}
+.hero-meta-item{font-size:.75rem;color:rgba(255,255,255,.3);letter-spacing:.04em}
+.hero-meta-item strong{color:rgba(255,255,255,.6);font-weight:600}
+
+/* FILTERS */
+.filters{max-width:1200px;margin:0 auto;padding:1.5rem 2rem;display:flex;gap:.5rem;flex-wrap:wrap;border-bottom:1px solid rgba(255,255,255,.06)}
+.filter-btn{padding:.4rem 1rem;border-radius:100px;border:1px solid rgba(255,255,255,.1);background:transparent;color:rgba(255,255,255,.4);font-size:.75rem;font-weight:600;font-family:'Geologica',sans-serif;cursor:pointer;transition:all .25s;letter-spacing:.02em}
+.filter-btn:hover{border-color:rgba(255,255,255,.25);color:rgba(255,255,255,.7)}
+.filter-btn.active{background:#FA2A52;border-color:#FA2A52;color:#fff}
+
+/* FEATURED */
+.featured{max-width:1200px;margin:0 auto;padding:3rem 2rem;display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06)}
+.featured-main{background:#0a0a0a;padding:2.5rem;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden;min-height:420px}
+.featured-main .cover{position:absolute;inset:0;z-index:0}
+.featured-main .cover img{width:100%;height:100%;object-fit:cover;filter:brightness(.3)}
+.featured-main .cover::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,10,.95) 0%,rgba(10,10,10,.3) 100%)}
+.featured-main-content{position:relative;z-index:1}
+.featured-side{background:#0a0a0a;display:flex;flex-direction:column;gap:1px}
+.featured-side-item{background:#0d0d0d;padding:1.75rem;flex:1;display:flex;flex-direction:column;gap:.5rem;transition:background .2s;cursor:pointer}
+.featured-side-item:hover{background:#111}
+
+/* TAGS */
+.tag{display:inline-block;padding:.25rem .65rem;border-radius:100px;font-size:.65rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.tag-dish{background:rgba(250,42,82,.12);color:#FA2A52;border:1px solid rgba(250,42,82,.2)}
+.tag-city{background:rgba(249,115,22,.12);color:#F97316;border:1px solid rgba(249,115,22,.2)}
+.tag-algo{background:rgba(52,211,153,.1);color:#34d399;border:1px solid rgba(52,211,153,.2)}
+.tag-biz{background:rgba(147,51,234,.12);color:#a78bfa;border:1px solid rgba(147,51,234,.2)}
+.tag-score{background:rgba(250,204,21,.1);color:#fbbf24;border:1px solid rgba(250,204,21,.2)}
+
+/* ARTICLE CARDS */
+.article-title-lg{font-size:clamp(1.3rem,2.5vw,1.9rem);font-weight:800;letter-spacing:-.03em;line-height:1.15;margin:.4rem 0 .6rem}
+.article-title-md{font-size:1.05rem;font-weight:700;letter-spacing:-.02em;line-height:1.3}
+.article-excerpt{font-size:.85rem;color:rgba(255,255,255,.4);line-height:1.65}
+.article-excerpt-sm{font-size:.8rem;color:rgba(255,255,255,.35);line-height:1.6}
+.article-meta{display:flex;align-items:center;gap:.75rem;margin-top:auto;padding-top:.75rem}
+.article-meta-text{font-size:.7rem;color:rgba(255,255,255,.25)}
+.read-link{font-size:.75rem;font-weight:700;color:#FA2A52;letter-spacing:.04em;text-transform:uppercase;margin-top:.75rem;display:inline-flex;align-items:center;gap:.3rem;transition:gap .2s}
+.read-link:hover{gap:.5rem}
+
+/* GRID */
+.grid-section{max-width:1200px;margin:0 auto;padding:3rem 2rem}
+.grid-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.18em;color:rgba(255,255,255,.25);font-weight:700;margin-bottom:1.5rem}
+.article-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.06)}
+.article-card{background:#0a0a0a;padding:1.75rem;display:flex;flex-direction:column;gap:.5rem;transition:background .2s;cursor:pointer}
+.article-card:hover{background:#0e0e0e}
+.article-card-img{width:100%;height:160px;object-fit:cover;border-radius:8px;margin-bottom:.25rem;filter:brightness(.85)}
+
+/* CITY FEATURE */
+.city-feature{max-width:1200px;margin:0 auto;padding:3rem 2rem;border-top:1px solid rgba(255,255,255,.06)}
+.city-feature-inner{display:grid;grid-template-columns:1.2fr 1fr;gap:3rem;align-items:center}
+.city-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem 1rem;border-radius:100px;border:1px solid rgba(249,115,22,.2);background:rgba(249,115,22,.06);margin-bottom:1.25rem}
+.city-badge-dot{width:8px;height:8px;border-radius:50%;background:#F97316;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.city-badge-text{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#F97316}
+.city-h2{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;letter-spacing:-.04em;margin-bottom:.75rem}
+.city-p{font-size:.9rem;color:rgba(255,255,255,.45);line-height:1.75;margin-bottom:1.5rem}
+.city-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.city-card{background:#111;border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1rem;transition:border-color .2s}
+.city-card:hover{border-color:rgba(249,115,22,.2)}
+.city-card-dish{font-size:.85rem;font-weight:700;margin-bottom:.2rem}
+.city-card-spot{font-size:.75rem;color:rgba(255,255,255,.35)}
+.city-card-score{font-size:.75rem;font-weight:800;color:#FA2A52;margin-top:.25rem}
+
+/* NEWSLETTER */
+.newsletter{background:linear-gradient(135deg,rgba(250,42,82,.07),rgba(249,115,22,.04));border-top:1px solid rgba(250,42,82,.1);border-bottom:1px solid rgba(255,255,255,.05)}
+.newsletter-inner{max-width:700px;margin:0 auto;padding:4rem 2rem;text-align:center}
+.newsletter h2{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:900;letter-spacing:-.03em;margin-bottom:.5rem}
+.newsletter p{color:rgba(255,255,255,.4);font-size:.9rem;margin-bottom:1.75rem}
+.newsletter-form{display:flex;gap:.5rem;max-width:420px;margin:0 auto;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:4px}
+.newsletter-form input{flex:1;padding:.75rem 1rem;border:none;background:transparent;color:#fff;font-size:.88rem;font-family:inherit;outline:none}
+.newsletter-form input::placeholder{color:rgba(255,255,255,.25)}
+.newsletter-form button{padding:.75rem 1.4rem;border-radius:9px;border:none;background:#FA2A52;color:#fff;font-weight:700;font-size:.8rem;cursor:pointer;font-family:'Geologica',sans-serif;transition:all .3s;white-space:nowrap}
+.newsletter-form button:hover{background:#e0234a}
+.newsletter-note{font-size:.7rem;color:rgba(255,255,255,.2);margin-top:.75rem}
+
+/* FOOTER */
+.footer{max-width:1200px;margin:0 auto;padding:2.5rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.footer-brand{font-size:.82rem;font-weight:700;font-family:'Geologica',sans-serif;color:rgba(255,255,255,.3)}
+.footer-brand span{color:#F97316}
+.footer-links{display:flex;gap:1.5rem}
+.footer-links a{font-size:.75rem;color:rgba(255,255,255,.25);transition:color .2s}
+.footer-links a:hover{color:rgba(255,255,255,.6)}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .nav-links{display:none}
+  .featured{grid-template-columns:1fr}
+  .article-grid{grid-template-columns:1fr}
+  .city-feature-inner{grid-template-columns:1fr}
+  .hero h1{font-size:2.2rem}
+  .filters{padding:1rem}
+  .featured-main{min-height:320px}
+}
+@media(max-width:480px){
+  .nav{padding:.75rem 1rem}
+  .hero{padding:5.5rem 1rem 2.5rem}
+  .grid-section,.city-feature{padding:2rem 1rem}
+  .featured-main,.featured-side-item{padding:1.25rem}
+  .article-card{padding:1.25rem}
+  .city-grid{grid-template-columns:1fr}
+  .newsletter-inner{padding:2.5rem 1rem}
+  .newsletter-form{flex-direction:column;background:transparent;border:none;gap:.75rem}
+  .newsletter-form input{border:1px solid rgba(255,255,255,.1);border-radius:10px;background:rgba(255,255,255,.05)}
+  .newsletter-form button{border-radius:10px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="/" class="nav-brand">
+    <div class="nav-logo"><img src="/forkfox-logo.png" alt="ForkFox"></div>
+    <span class="nav-name">Fork<span class="fox">Fox</span></span>
+    <span class="nav-section">The Dish</span>
+  </a>
+  <div class="nav-links">
+    <a href="/the-dish" class="active">All</a>
+    <a href="/the-dish#dish-discovery">Discoveries</a>
+    <a href="/the-dish#city-spotlights">Cities</a>
+    <a href="/the-dish#the-score">The Score</a>
+    <a href="/" class="nav-cta">Get Beta Access</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">ForkFox Intelligence</div>
+  <h1>The <em>Dish.</em></h1>
+  <p class="hero-sub">Dish intel, city spotlights, and the science behind the score. Everything you need to eat smarter — one city at a time.</p>
+  <div class="hero-meta">
+    <div class="hero-meta-item"><strong>Philadelphia</strong> — Market 1</div>
+    <div class="hero-meta-item"><strong>Bay Area</strong> — Market 2</div>
+    <div class="hero-meta-item"><strong>10 cuisines</strong> tracked</div>
+    <div class="hero-meta-item"><strong>Patent-pending</strong> scoring</div>
+  </div>
+</section>
+
+<!-- FILTERS -->
+<div class="filters">
+  <button class="filter-btn active">All</button>
+  <button class="filter-btn">Dish Discovery</button>
+  <button class="filter-btn">City Spotlights</button>
+  <button class="filter-btn">The Algorithm</button>
+  <button class="filter-btn">Restaurant Intel</button>
+  <button class="filter-btn">Score Reveals</button>
+</div>
+
+<!-- FEATURED -->
+<section class="featured" id="dish-discovery">
+  <div class="featured-main">
+    <div class="cover">
+      <img src="/dishes/japanese.jpg" alt="Japanese dish">
+      <div></div>
+    </div>
+    <div class="featured-main-content">
+      <span class="tag tag-dish">Dish Discovery</span>
+      <h2 class="article-title-lg">The Best Ramen in Philly Isn't Where You Think</h2>
+      <p class="article-excerpt">We scored 47 bowls across 12 restaurants. The highest-scoring broth came from a place most Yelp lists have never heard of. Here's what the algorithm found — and why the ratings disagree with your gut.</p>
+      <div class="article-meta">
+        <span class="article-meta-text">Philadelphia · 6 min read</span>
+        <span class="article-meta-text">April 2026</span>
+      </div>
+      <a href="#" class="read-link">Read the full breakdown →</a>
+    </div>
+  </div>
+  <div class="featured-side">
+    <div class="featured-side-item">
+      <span class="tag tag-city">City Spotlight</span>
+      <h3 class="article-title-md">Bay Area's Taco Scene Is Being Redefined by a New Wave of Taquerias</h3>
+      <p class="article-excerpt-sm">ForkFox scored 200+ tacos across the Mission, Oakland, and San Jose. The dish rankings don't follow the hype.</p>
+      <a href="#" class="read-link">Read →</a>
+    </div>
+    <div class="featured-side-item">
+      <span class="tag tag-algo">The Algorithm</span>
+      <h3 class="article-title-md">Why We Score Dishes, Not Restaurants — And Why It Changes Everything</h3>
+      <p class="article-excerpt-sm">The founding idea behind ForkFox: a 4-star restaurant can serve a 1-star dish. Here's the math we built to prove it.</p>
+      <a href="#" class="read-link">Read →</a>
+    </div>
+    <div class="featured-side-item">
+      <span class="tag tag-score">Score Reveal</span>
+      <h3 class="article-title-md">The ForkFox Ethiopian Rankings Are In — Philly Surprised Everyone</h3>
+      <p class="article-excerpt-sm">Injera, tibs, and kitfo across 8 restaurants. The highest-scoring spots had almost no online presence.</p>
+      <a href="#" class="read-link">Read →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ARTICLE GRID — RECENT -->
+<section class="grid-section">
+  <div class="grid-label">Recent Intelligence</div>
+  <div class="article-grid">
+    <div class="article-card">
+      <img src="/dishes/mexican.jpg" alt="Mexican" class="article-card-img">
+      <span class="tag tag-city">City Spotlight</span>
+      <h3 class="article-title-md">The Birria War: Philly vs. The Bay</h3>
+      <p class="article-excerpt-sm">Two cities, one dish, and a scoring gap that'll surprise you. We sent our algorithm to both coasts.</p>
+      <div class="article-meta">
+        <span class="article-meta-text">8 min read · April 2026</span>
+      </div>
+    </div>
+    <div class="article-card">
+      <img src="/dishes/thai.jpg" alt="Thai" class="article-card-img">
+      <span class="tag tag-dish">Dish Discovery</span>
+      <h3 class="article-title-md">The Pad Thai Problem: Why Consistency Is the Rarest Score</h3>
+      <p class="article-excerpt-sm">Pad thai is the most-ordered Thai dish in America. It's also the one with the widest quality variance. We mapped it.</p>
+      <div class="article-meta">
+        <span class="article-meta-text">5 min read · April 2026</span>
+      </div>
+    </div>
+    <div class="article-card">
+      <img src="/dishes/indian.jpg" alt="Indian" class="article-card-img">
+      <span class="tag tag-algo">The Algorithm</span>
+      <h3 class="article-title-md">How We Scored 1,000+ Dishes Without a Single Michelin Star in the Criteria</h3>
+      <p class="article-excerpt-sm">Traditional ratings are built around restaurant prestige. Ours are built around the plate in front of you. Here's how.</p>
+      <div class="article-meta">
+        <span class="article-meta-text">10 min read · March 2026</span>
+      </div>
+    </div>
+    <div class="article-card">
+      <img src="/dishes/chinese.jpg" alt="Chinese" class="article-card-img">
+      <span class="tag tag-score">Score Reveal</span>
+      <h3 class="article-title-md">Dim Sum in the Bay: A Full Scoring Report Across 14 Spots</h3>
+      <p class="article-excerpt-sm">Ha gow. Siu mai. Char siu bao. We ordered everything and ran the numbers. Here's the full breakdown.</p>
+      <div class="article-meta">
+        <span class="article-meta-text">7 min read · March 2026</span>
+      </div>
+    </div>
+    <div class="article-card">
+      <img src="/dishes/burmese.jpg" alt="Burmese" class="article-card-img">
+      <span class="tag tag-biz">Restaurant Intel</span>
+      <h3 class="article-title-md">Why Burmese Restaurants Score High on Dish Quality but Low on Discovery</h3>
+      <p class="article-excerpt-sm">Our data shows a clear gap: some of the highest-scoring cuisines have almost no digital presence. That's the ForkFox opportunity.</p>
+      <div class="article-meta">
+        <span class="article-meta-text">6 min read · March 2026</span>
+      </div>
+    </div>
+    <div class="article-card">
+      <img src="/dishes/pizza.jpg" alt="Pizza" class="article-card-img">
+      <span class="tag tag-city">City Spotlight</span>
+      <h3 class="article-title-md">Philly Pizza, Ranked: The Surprising Truth Behind a City That Doesn't Talk About Its Slices</h3>
+      <p class="article-excerpt-sm">Everyone knows the cheesesteak. But Philly's pizza scene is quietly exceptional — and almost entirely unranked by major platforms.</p>
+      <div class="article-meta">
+        <span class="article-meta-text">9 min read · February 2026</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CITY FEATURE: PHILLY -->
+<section class="city-feature" id="city-spotlights">
+  <div class="city-feature-inner">
+    <div>
+      <div class="city-badge">
+        <div class="city-badge-dot"></div>
+        <span class="city-badge-text">Market 1 — Live</span>
+      </div>
+      <h2 class="city-h2">Philadelphia</h2>
+      <p class="city-p">ForkFox's first city. Philly has an underrated, diverse food scene with massive untapped dish-level discovery. Our beta is live here first — and the scores are already breaking assumptions.</p>
+      <p class="city-p" style="margin-bottom:0">10 cuisines tracked. 12 neighborhoods mapped. 300+ dishes scored in the first 60 days of beta.</p>
+    </div>
+    <div class="city-grid">
+      <div class="city-card">
+        <div class="city-card-dish">Injera Combo</div>
+        <div class="city-card-spot">Dahlak, West Philly</div>
+        <div class="city-card-score">Score: 94 / 100</div>
+      </div>
+      <div class="city-card">
+        <div class="city-card-dish">Tonkotsu Ramen</div>
+        <div class="city-card-spot">Undisclosed, Center City</div>
+        <div class="city-card-score">Score: 91 / 100</div>
+      </div>
+      <div class="city-card">
+        <div class="city-card-dish">Birria Taco (x3)</div>
+        <div class="city-card-spot">South Philly corridor</div>
+        <div class="city-card-score">Score: 89 / 100</div>
+      </div>
+      <div class="city-card">
+        <div class="city-card-dish">Saag Paneer</div>
+        <div class="city-card-spot">University City</div>
+        <div class="city-card-score">Score: 88 / 100</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter">
+  <div class="newsletter-inner">
+    <h2>Get The Dish in Your Inbox</h2>
+    <p>Weekly dish intel, city spotlights, and score reveals — straight from the ForkFox algorithm. No restaurant PR. No paid placements.</p>
+    <form class="newsletter-form" onsubmit="return false">
+      <input type="email" placeholder="your@email.com">
+      <button type="submit">Subscribe</button>
+    </form>
+    <p class="newsletter-note">No spam. Unsubscribe any time. We only email when the intel is worth reading.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="border-top:1px solid rgba(255,255,255,.06)">
+  <div class="footer">
+    <div class="footer-brand">Fork<span>Fox</span> — The Dish</div>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/support">Support</a>
+      <a href="https://apps.apple.com" target="_blank">TestFlight</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Filter interactivity
+document.querySelectorAll('.filter-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+  });
+});
+
+// Nav scroll
+window.addEventListener('scroll',()=>{
+  document.querySelector('.nav').style.borderBottomColor=
+    window.scrollY>10?'rgba(255,255,255,.08)':'rgba(255,255,255,.06)';
+},{ passive:true });
+</script>
+</body>
+</html>

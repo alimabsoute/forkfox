@@ -2,7 +2,9 @@
   "rewrites": [
     { "source": "/", "destination": "/fork-landing-cinematic.html" },
     { "source": "/privacy", "destination": "/privacy/index.html" },
-    { "source": "/support", "destination": "/support/index.html" }
+    { "source": "/support", "destination": "/support/index.html" },
+    { "source": "/the-dish", "destination": "/the-dish/index.html" },
+    { "source": "/the-dish/(.*)", "destination": "/the-dish/$1" }
   ],
   "headers": [
     {
