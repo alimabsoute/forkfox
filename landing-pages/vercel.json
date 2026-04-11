@@ -5,8 +5,12 @@
     { "source": "/support", "destination": "/support/index.html" },
     { "source": "/the-dish", "destination": "/the-dish/index.html" },
     { "source": "/the-dish/(.*)", "destination": "/the-dish/$1" },
+    { "source": "/the-dish/rss.xml", "destination": "/the-dish/rss.xml" },
+    { "source": "/carte", "destination": "/carte/index.html" },
+    { "source": "/carte/(.*)", "destination": "/carte/$1" },
     { "source": "/socials", "destination": "/socials/index.html" },
-    { "source": "/restaurants", "destination": "/restaurants/index.html" }
+    { "source": "/restaurants", "destination": "/restaurants/index.html" },
+    { "source": "/gallery", "destination": "/gallery/index.html" }
   ],
   "headers": [
     {
