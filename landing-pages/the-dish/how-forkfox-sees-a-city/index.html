@@ -26,7 +26,17 @@ nav.site{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,1
 nav.site ul{display:flex;gap:24px;list-style:none;margin-left:auto;align-items:center}
 nav.site ul a{font-size:14px;color:#999;transition:color .2s}
 nav.site ul a:hover{color:#fff}
-.nav-cta{background:#FA2A52;color:#fff!important;padding:8px 18px;border-radius:20px;font-size:13px;font-weight:600}
+nav.site ul li:first-child a{color:#ccc;font-size:13px;font-weight:500;letter-spacing:.01em;transition:color .2s}
+nav.site ul li:first-child a:hover{color:#fff}
+.nav-pill,.nav-ghost{display:inline-flex;align-items:center;justify-content:center;min-width:88px;font-size:13px;font-weight:700;padding:7px 16px;border-radius:20px;transition:transform .22s ease,box-shadow .22s ease,background .22s ease,border-color .22s ease;letter-spacing:.01em}
+.nav-pill{background:#F97316;color:#0a0a0a!important;border:1.5px solid rgba(255,160,70,.5);box-shadow:0 4px 18px rgba(249,115,22,.45),0 1px 4px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.22)}
+.nav-pill:hover{background:#fb8c34!important;transform:translateY(-1px);box-shadow:0 7px 22px rgba(249,115,22,.55),inset 0 1px 0 rgba(255,255,255,.28);color:#0a0a0a!important}
+.nav-pill:active{transform:translateY(1px);box-shadow:0 1px 5px rgba(249,115,22,.2)!important;transition:all .08s}
+.nav-ghost{background:transparent;color:#F97316!important;border:1.5px solid rgba(249,115,22,.55)}
+.nav-ghost:hover{background:rgba(249,115,22,.14)!important;border-color:rgba(249,115,22,.8);transform:translateY(-1px);box-shadow:0 4px 16px rgba(249,115,22,.22);color:#fb8c34!important}
+.nav-ghost:active{transform:translateY(1px);transition:all .08s}
+.nav-cta{background:#FA2A52;color:#fff!important;padding:8px 18px;border-radius:20px;font-size:13px;font-weight:600;transition:all .2s}
+.nav-cta:hover{background:#e0243f}
 .progress{position:fixed;top:60px;left:0;height:2px;background:linear-gradient(90deg,#FA2A52,#F97316);width:0;z-index:101;transition:width .1s}
 .page-wrap{max-width:1200px;margin:0 auto;padding:90px 24px 60px}
 .breadcrumb{font-size:12px;color:#555;margin-bottom:20px;font-family:monospace}
@@ -173,7 +183,12 @@ footer a{color:#888}
 <div class="progress" id="progress"></div>
 <nav class="site">
   <a href="https://forkfox.ai/" class="logo"><div class="logo-sq">FF</div><div class="logo-text">Fork<span>Fox</span></div></a>
-  <ul><li><a href="https://forkfox.ai/">Home</a></li><li><a href="https://forkfox.ai/the-dish">The Dish</a></li><li><a href="https://forkfox.ai/carte">Carte</a></li><li><a href="https://forkfox.ai/#download" class="nav-cta">Join Beta →</a></li></ul>
+  <ul>
+    <li><a href="https://forkfox.ai/">Home</a></li>
+    <li><a href="https://forkfox.ai/the-dish" class="nav-pill">The Dish</a></li>
+    <li><a href="https://forkfox.ai/carte" class="nav-ghost">Carte</a></li>
+    <li><a href="https://forkfox.ai/#download" class="nav-cta">Join Beta →</a></li>
+  </ul>
 </nav>
 
 <div class="page-wrap">
