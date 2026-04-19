@@ -31,16 +31,17 @@ nav.site ul a{font-size:14px;color:#888}
 /* === HERO CITIES COMPOSITE (AI image + motion) === */
 .hero-cities{position:relative;margin:36px 0 48px;border-radius:18px;overflow:hidden;aspect-ratio:21/9;min-height:420px;background:#050505;box-shadow:0 50px 140px rgba(0,0,0,.65),0 16px 50px rgba(250,42,82,.15),inset 0 0 0 1px rgba(255,255,255,.05)}
 .hc-photo{position:absolute;inset:0;background-image:url('hero-cities.png');background-size:cover;background-position:center;background-repeat:no-repeat}
+.hc-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.14) translate(-3.5%,-3%);transform-origin:center;z-index:1}
 .hc-grain{position:absolute;inset:-50%;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='280' height='280'%3E%3Cfilter id='ng'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23ng)'/%3E%3C/svg%3E");opacity:.3;mix-blend-mode:overlay;pointer-events:none;z-index:3;animation:hcGrain 1.6s steps(4) infinite}
 @keyframes hcGrain{0%{transform:translate(0,0)}25%{transform:translate(-4%,2%)}50%{transform:translate(3%,-3%)}75%{transform:translate(-2%,4%)}100%{transform:translate(0,0)}}
 .hc-shine{position:absolute;top:-20%;left:-30%;width:50%;height:140%;background:linear-gradient(115deg,transparent 30%,rgba(255,220,180,.08) 45%,rgba(255,220,180,.14) 50%,rgba(255,220,180,.08) 55%,transparent 70%);transform:rotate(18deg);pointer-events:none;z-index:4;animation:hcShine 14s ease-in-out infinite;mix-blend-mode:screen}
 @keyframes hcShine{0%,100%{transform:translateX(0) rotate(18deg);opacity:.4}50%{transform:translateX(240%) rotate(18deg);opacity:.8}}
 .hc-vignette{position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 60%,rgba(0,0,0,.3) 100%);pointer-events:none;z-index:2}
-/* Corner mask — scrubs the small Gemini watermark star in bottom-right */
-.hc-corner-mask{display:none}
+/* Corner mask — scrubs the "remembering?..." baked-in text + Gemini watermark in bottom-right */
+.hc-corner-mask{position:absolute;right:0;bottom:0;width:55%;height:38%;background:radial-gradient(ellipse at 85% 85%,rgba(5,5,5,.96) 0%,rgba(5,5,5,.88) 35%,rgba(5,5,5,.55) 65%,transparent 100%);pointer-events:none;z-index:5}
 @media(max-width:620px){
   .hero-cities{aspect-ratio:16/9;min-height:320px}
-  .hc-corner-mask{display:none}
+  .hc-corner-mask{width:70%;height:45%}
 }
 
 /* === HAND-DRAWN SKETCH HERO (LEGACY, HIDDEN) === */
@@ -107,6 +108,7 @@ nav.site ul a{font-size:14px;color:#888}
 .hero-tagline .line em{font-style:normal;color:#FA2A52}
 @keyframes fadeUp{0%{opacity:0;transform:translateY(14px)}100%{opacity:1;transform:translateY(0)}}
 
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 h1.article-title{font-family:'Geologica',sans-serif;font-weight:900;font-size:clamp(30px,4.5vw,50px);line-height:1.05;letter-spacing:-.025em;margin-bottom:14px;color:#fff}
 h1.article-title em{font-style:normal;color:#FA2A52}
 .deck{font-size:15px;line-height:1.7;color:#999;margin:10px 0 18px;max-width:720px;font-family:'Lora',serif}
@@ -289,10 +291,11 @@ footer a{color:#888}
 <div class="page-wrap">
   <nav class="breadcrumb"><a href="https://forkfox.ai/">Home</a> / <a href="https://forkfox.ai/the-dish">The Dish</a> / <span>Two cities, one question</span></nav>
 
-  <figure class="hero-cities" aria-label="San Francisco + Philadelphia composite — Two cities, one question">
-    <div class="hc-photo" role="img" aria-label="Golden Gate Bridge and Philadelphia skyline composite"></div>
+  <figure class="hero-cities" aria-label="San Francisco + Philadelphia cityscape">
+    <video class="hc-video" autoplay muted loop playsinline preload="auto" aria-label="SF and Philly cityscape split screen">
+      <source src="hero-cities.mp4" type="video/mp4">
+    </video>
     <div class="hc-grain"></div>
-    <div class="hc-corner-mask"></div>
     <div class="hc-shine"></div>
     <div class="hc-vignette"></div>
   </figure>
@@ -442,8 +445,8 @@ footer a{color:#888}
     </div>
   </figure>
 
-  <h1 class="article-title">Two cities, one question: what makes a dish <em>worth remembering</em>?</h1>
-  <p class="deck">San Francisco and Philadelphia are 2,900 miles apart. Their food scenes share more than you'd think. And the things they don't share are the most revealing.</p>
+  <h1 class="article-title sr-only">Two cities, one question: what makes a dish worth remembering?</h1>
+  <p class="deck sr-only">San Francisco and Philadelphia are 2,900 miles apart. Their food scenes share more than you'd think. And the things they don't share are the most revealing.</p>
 
   <div class="agg-stats">
     <div class="stat"><div class="stat-num">2,900</div><div class="stat-lbl">Miles apart</div></div>
