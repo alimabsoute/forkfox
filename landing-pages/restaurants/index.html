@@ -182,6 +182,7 @@ a{text-decoration:none}
   </a>
   <div class="nav-right">
     <div class="nav-links-desktop" style="display:flex;gap:1.5rem">
+      <a href="../fork-landing-cinematic.html">Consumer Site</a>
       <a href="#how-it-works">How It Works</a>
       <a href="#pricing">Pricing</a>
     </div>
@@ -205,7 +206,10 @@ a{text-decoration:none}
       <strong>Your top-scored dishes surface at the top of discovery</strong> — exactly when hungry locals are looking.
     </p>
 
-    <form class="waitlist-form" id="waitlist" action="mailto:ali@forkfox.ai" method="post" enctype="text/plain">
+    <form class="waitlist-form" id="waitlist" action="https://formsubmit.co/hello@forkfox.ai" method="POST">
+      <input type="hidden" name="_subject" value="ForkFox Restaurant Waitlist Signup">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://forkfox.ai/restaurants?signed-up=true">
       <div class="form-row">
         <input type="text" name="restaurant" placeholder="Restaurant name" required>
         <input type="text" name="city" placeholder="City" required>
@@ -475,7 +479,10 @@ a{text-decoration:none}
   <div class="cta-bg"></div>
   <h2>20 founding restaurant spots.<br>Philly &amp; Bay Area.</h2>
   <p>We're onboarding a small cohort of founding restaurant partners in April. Get lifetime preferred pricing and direct product input.</p>
-  <form class="cta-form" action="mailto:ali@forkfox.ai" method="post" enctype="text/plain">
+  <form class="cta-form" action="https://formsubmit.co/hello@forkfox.ai" method="POST">
+    <input type="hidden" name="_subject" value="ForkFox Restaurant Founding Cohort Signup">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_next" value="https://forkfox.ai/restaurants?signed-up=true">
     <input type="email" name="email" placeholder="your@restaurant.com" required>
     <button type="submit">Claim Your Spot</button>
   </form>
